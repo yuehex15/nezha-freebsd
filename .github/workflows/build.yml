@@ -26,7 +26,6 @@ jobs:
       env: 
         IPINFO_TOKEN: 8ea717b3ebb498
       run: |
-        rm pkg/geoip/geoip.db
         wget -O pkg/geoip/geoip.db https://ipinfo.io/data/free/country.mmdb?token=${IPINFO_TOKEN}
 
     - name: Upload artifact

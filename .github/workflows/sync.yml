@@ -13,7 +13,7 @@ jobs:
       - name: compare versions
         run: |
           export REMOTEVERSION=$(wget -qO- https://api.github.com/repos/naiba/nezha/tags | gawk -F '["v]' '/name/{print "v"$5;exit}')
-          export LOCALVERSION=$(curl --location --silent --fail --show-error "https://api.github.com/repos/wansyu/nezha-freebsd/releases/latest" | grep -oP '"tag_name":\s*"\K[^"]+')
+          export LOCALVERSION=$(curl --location --silent --fail --show-error "https://api.github.com/repos/yuehe572/nezha-freebsd/releases/latest" | grep -oP '"tag_name":\s*"\K[^"]+')
           bash compare.sh
           
       - name: Trigger release

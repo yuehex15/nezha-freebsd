@@ -19,14 +19,9 @@ jobs:
         run: |
           export LATEST_APP=$(wget -qO- https://api.github.com/repos/naiba/nezha/tags | gawk -F '["v]' '/name/{print "v"$5;exit}')
           git clone -b $LATEST_APP https://github.com/naiba/nezha
+          wget -O pkg/geoip/geoip.db https://ipinfo.io/data/free/country.mmdb?token=8ea717b3ebb498
           cd nezha/cmd/dashboard
           bash ../../../build.sh
-
-    - name: Fetch IPInfo GeoIP Database
-      env: 
-        IPINFO_TOKEN: 8ea717b3ebb498
-      run: |
-        wget -O pkg/geoip/geoip.db https://ipinfo.io/data/free/country.mmdb?token=${IPINFO_TOKEN}
 
     - name: Upload artifact
       uses: actions/upload-artifact@main
